@@ -1,5 +1,6 @@
 class Menu
 {
+    public static List<User> AllUsers = [];
     public static void StartMenu()
     {
         string userInput = Console.ReadLine();
