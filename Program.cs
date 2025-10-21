@@ -6,6 +6,7 @@ namespace BankApp
     {
         static void Main(string[] args)
         {
+            StartupAction.InitilizeTestData();
             Login.StartLogin();
         }
     }
