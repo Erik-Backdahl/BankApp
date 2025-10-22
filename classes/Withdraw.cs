@@ -18,6 +18,46 @@ namespace BankApp.classes
                 Console.WriteLine($"({index}) " + account.AccountNumber);
                 index++;
             }
+            int number;
+while (true)
+{
+    if(int.TryParse(Console.ReadLine(), out number))
+    {
+        break;
+    }
+    else
+    {
+        Console.WriteLine("Enter a valid number");
+    }
+}
+var selectedAccount = currentUser.Accounts[number];
+
+Console.Write("Ange belopp att ta ut: ");
+decimal amount;
+while (true)
+{
+    if (decimal.TryParse(Console.ReadLine(), out amount) && amount > 0)
+    {
+        break;
+    }
+    else
+    {
+        Console.WriteLine("Ange ett giltigt belopp större än 0.");
+    }
+}
+
+if (selectedAccount.Balance >= amount)
+{
+    
+    Console.WriteLine($"\nUttag på {amount} {selectedAccount.Currency} har registrerats.");
+
+
+    Console.WriteLine("Transaktionen kommer behandlas inom 15 minuter.");
+}
+else
+{
+    Console.WriteLine("Otillräckligt saldo för detta uttag.");
+}
 
         }
     }
