@@ -30,7 +30,7 @@ namespace BankApp.classes
         //method to crate a new account
         public void  CreateAccount()
         {
-            List<Account> accounts = new List<Account>();
+            
             var account = new Account();
             account.AccountNumber = Guid.NewGuid().ToString();
             account.Balance = 0;
