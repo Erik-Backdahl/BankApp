@@ -6,6 +6,7 @@ class Login
 {
     public static void StartLogin()
     {
+        StartupAction.InitilizeTestData();
         while (true) // Loop until successful login
         {
             Console.WriteLine("Enter your personal number:"); // Prompt user for personal number
