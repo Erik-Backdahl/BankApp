@@ -1,26 +1,32 @@
 using System.ComponentModel;
+using System.Threading.Tasks;
+using BankApp.HelperClasses;
+using StaticClasses.Endpoint;
 
 class Menu
 {
     public static List<User> AllUsers = [];
-    public static void StartMenu()
+    public static async Task StartMenu(User currentUser)
     {
         bool active = true;
         while (active)
         {
+            DisplayData.DisplayUserData(currentUser);
+
+            DisplayData.DisplayMenu(User.Administator);
 
             string userInput = Console.ReadLine();
             switch (userInput)
             {
                 case "1":
-                    //INSERT WITHDRAW METHOD HERE
+                    MenuOptions.Withdraw(currentUser);
                     break;
                 case "2":
                     //INSERT DEPOSIT METHOD HERE
                     break;
 
                 case "3":
-                    //INSERT CREATE NEW ACCOUNT HERE
+                    await MenuOptions.CreateNewAccount(currentUser);
                     break;
 
                 case "4":
@@ -28,9 +34,11 @@ class Menu
                     break;
 
                 default:
+                    active = false;
                     break;
 
             }
         }
+        Console.WriteLine("Program ending");
     }
 }

@@ -4,9 +4,9 @@ namespace BankApp
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Login.StartLogin();
+            await Login.StartLogin();
         }
     }
 }
