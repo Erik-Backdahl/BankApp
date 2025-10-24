@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 class Login
 {
-    public static void StartLogin()
+    public static async Task StartLogin()
     {
+        StartupAction.InitilizeTestData();
         while (true) // Loop until successful login
         {
             Console.WriteLine("Enter your personal number:"); // Prompt user for personal number
@@ -15,20 +16,22 @@ class Login
             string password = Console.ReadLine(); // Read input
 
             bool loggedIn = false; // Initialize login status
+            var loggedInUser = default(User); // Track the logged-in user
 
             foreach (var user in Menu.AllUsers) // Iterate through all users
             {
                 if (user.PersonalNumber == personalNumber && user.Password == password) // Check credentials
                 {
                     loggedIn = true; // Set login status to true
+                    loggedInUser = user; // Store the logged-in user
                     break; // Exit loop on successful login
                 }
             }
 
-            if (loggedIn) // Check login result
+            if (loggedIn && loggedInUser != null) // Check login result
             {
                 Console.WriteLine("Login successful!"); // Success message
-                Menu.StartMenu();
+                await Menu.StartMenu(loggedInUser); // Pass the current user to StartMenu
                 break;
             }
             else

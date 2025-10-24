@@ -9,26 +9,26 @@ namespace BankApp.classes
 {
     public class Account
     {
-        public string AccountNumber { get; set; } =Guid.NewGuid().ToString();
+        public string AccountNumber { get; set; } = Guid.NewGuid().ToString();
         public string ownerid { get; set; }
         public decimal Balance { get; set; }
         public string AccountType { get; set; }
         public string Currency { get; set; }
 
-        
 
 
 
-       
-        
 
 
 
-        
+
+
+
+
 
 
         //method to crate a new account
-        public void  CreateAccount()
+        public void CreateAccount()
         {
             List<Account> accounts = new List<Account>();
             var account = new Account();
