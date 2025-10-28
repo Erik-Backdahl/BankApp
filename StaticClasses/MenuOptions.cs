@@ -25,7 +25,7 @@ namespace StaticClasses.Endpoint
                     Console.WriteLine("Enter a valid number");
                 }
             }
-            var selectedAccount = currentUser.Accounts[number];
+            
 
             Console.Write("Ange belopp att ta ut: ");
             decimal amount;
@@ -40,12 +40,11 @@ namespace StaticClasses.Endpoint
                     Console.WriteLine("Ange ett giltigt belopp större än 0.");
                 }
             }
-            Account newAccount = new Account();
 
-            if (selectedAccount.Balance >= amount)
+            if (currentUser.Accounts[number].Balance >= amount)
             {
 
-                Console.WriteLine($"\nUttag på {amount} {selectedAccount.Currency} har registrerats.");
+                Console.WriteLine($"\nUttag på {amount} {currentUser.Accounts[number].Currency} har registrerats.");
 
 
                 Console.WriteLine("Transaktionen kommer behandlas inom 15 minuter.");
@@ -54,6 +53,8 @@ namespace StaticClasses.Endpoint
             {
                 Console.WriteLine("Otillräckligt saldo för detta uttag.");
             }
+            
+            currentUser.Accounts[number].Balance =- amount;
 
         }
         public static async Task CreateNewAccount(User user)
