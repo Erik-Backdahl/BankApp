@@ -1,3 +1,4 @@
+using System.Security.Principal;
 using BankApp.classes;
 
 namespace BankApp.HelperClasses
@@ -18,6 +19,10 @@ namespace BankApp.HelperClasses
                 foreach (Account account in user.Accounts)
                 {
                     Console.WriteLine($"{account.AccountType}\t {account.Balance} {account.Currency}");
+                    if (account.AccountType == "Savings")
+                    {
+                        Interest.ShowYearlyInterest(account);
+                    }
 
                 }
             }
