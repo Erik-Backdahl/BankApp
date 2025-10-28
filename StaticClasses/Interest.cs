@@ -10,6 +10,10 @@ static class Interest
 
     public static void ShowYearlyInterest(Account account) // returns the yearly interest for a given account
     {
+        if(account.Balance == 0)
+        {
+            return;
+        }
         decimal yearlyInterest = account.Balance * interestRate; // Simple interest calculation
         Console.WriteLine($"Yearly interest for account with balance {account.Balance} with 2% interest rate is {yearlyInterest} {account.Currency}");
 
