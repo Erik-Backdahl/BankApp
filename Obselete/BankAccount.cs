@@ -22,7 +22,7 @@ public class BankAccount // Class representing a bank account
         Console.WriteLine($"Deposit successful. New Balance: {Balance:C}"); // Display new balance
     }
 
-    public void AskUserToDeposit() // Method to prompt user for deposit details
+    public static void AskUserToDeposit(User currentUser)// Method to prompt user for deposit details
     {
         Console.WriteLine("What account do you want to deposit to?"); // Prompt for account type
         string accountType = Console.ReadLine(); // Read account type input

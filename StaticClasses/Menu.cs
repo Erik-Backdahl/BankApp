@@ -22,7 +22,7 @@ class Menu
                     MenuOptions.Withdraw(currentUser);
                     break;
                 case "2":
-                    //INSERT DEPOSIT METHOD HERE
+                    BankAccount.AskUserToDeposit(currentUser);
                     break;
 
                 case "3":
