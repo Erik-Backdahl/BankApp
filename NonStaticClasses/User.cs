@@ -8,7 +8,7 @@ public class User
     public required string Email { get; set; }
     public required string Password { get; set; }
     public required int PersonalNumber { get; set; }
-    public static bool Administator { get; set; } = false;
+    public bool Administator { get; set; } = false;
     public List<Account> Accounts { get; set; } = [];
     public decimal TotalBalance
     {
