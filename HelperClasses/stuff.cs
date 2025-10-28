@@ -28,16 +28,16 @@ namespace BankApp.HelperClasses
             Console.WriteLine("Write password:");
             string password = GetUserInput.ValidateString();
             Console.WriteLine("Write email:");
-            Console.WriteLine("write personal number:");
-            string personalnumber = GetUserInput.ValidateString();
             string email = GetUserInput.ValidateString();
+            Console.WriteLine("write personal number:");
+            int personalnumber = GetUserInput.ValidateInt();
             Console.WriteLine("Write role:");
             string role = GetUserInput.ValidateString();
 
 
-            Menu.AllUsers.Add(new User { Name = username, Password = password, Email = "", PersonalNumber = 0, Administator = true });
+            Menu.AllUsers.Add(new User { Name = username, Password = password, Email = email, PersonalNumber = personalnumber, Administator = true });
 
-            Console.WriteLine($"Ny administratörsanvändare '{username}' med rollen '{role}' har lagts till.");
+            Console.WriteLine($"New Admin '{username}' with  roll '{role}' have been added.");
         }
 
 
@@ -51,11 +51,11 @@ namespace BankApp.HelperClasses
             if (user != null)
             {
                 Menu.AllUsers.Remove(user);
-                Console.WriteLine($"Administratörsanvändare '{username} ' have been removed.");
+                Console.WriteLine($"Admin '{username} ' have been removed.");
             }
             else
             {
-                Console.WriteLine($"Ingen administratörsanvändare med namnet '{username}' could be found.");
+                Console.WriteLine($"No admin with the name '{username}' could be found.");
             }
         }
     }
