@@ -22,6 +22,15 @@ namespace BankApp.HelperClasses
                 }
             }
         }
+        public static void DisplayUserAccounts(User user)
+        {
+            int index = 0;
+            foreach(Account account in user.Accounts)
+            {
+                Console.WriteLine($"({index}) Type: {account.AccountType} current balance: {account.Balance} {account.Currency}");
+                index++;
+            }
+        }
         public static void DisplayMenu(Boolean Administator)
         {
             if (Administator)

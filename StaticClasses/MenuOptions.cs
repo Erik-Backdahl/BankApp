@@ -40,6 +40,7 @@ namespace StaticClasses.Endpoint
                     Console.WriteLine("Ange ett giltigt belopp större än 0.");
                 }
             }
+            Account newAccount = new Account();
 
             if (selectedAccount.Balance >= amount)
             {

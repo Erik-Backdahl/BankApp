@@ -30,7 +30,7 @@ class Menu
                     break;
 
                 case "4":
-                    //
+                    DisplayData.DisplayUserAccounts(currentUser);
                     break;
 
                 default:
