@@ -7,7 +7,9 @@ class Login
     public static async Task StartLogin()
     {
         StartupAction.InitilizeTestData();
-        while (true) // Loop until successful login
+        int attempts = 0;
+        int maxAttempts = 3;
+        while (attempts < maxAttempts) // Loop until successful login
         {
             Console.WriteLine("Enter your personal number:"); // Prompt user for personal number
             int personalNumber = int.Parse(Console.ReadLine()); // Read and parse input
@@ -36,8 +38,11 @@ class Login
             }
             else
             {
-                Console.WriteLine("Login failed. Please try again."); // Failure message
+                Console.WriteLine("Login failed."); // Failure message
+                attempts++;
             }
+
         }
+        Console.WriteLine("Login closed you failed 3 times.");
     }
 }
