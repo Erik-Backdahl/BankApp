@@ -13,7 +13,7 @@ class Menu
         {
             DisplayData.DisplayUserData(currentUser);
 
-            DisplayData.DisplayMenu(User.Administator);
+            DisplayData.DisplayMenu(currentUser.Administator);
 
             string userInput = Console.ReadLine();
             switch (userInput)
