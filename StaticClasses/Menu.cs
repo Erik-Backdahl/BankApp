@@ -33,6 +33,15 @@ class Menu
                     DisplayData.DisplayUserAccounts(currentUser);
                     break;
 
+                    case "5":
+                       
+                        Admin_user.AddAdminUser();
+                        break;
+                    case "6":
+                        Admin_user.RemoveAdminUser();
+                        break;
+
+                    
                 default:
                     active = false;
                     break;
