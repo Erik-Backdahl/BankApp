@@ -40,11 +40,12 @@ namespace BankApp.HelperClasses
         {
             if (Administator)
             {
-                Console.WriteLine($"(1) Withdraw\n(2) Deposit\n(3) Open a new Account\n(4) to take out a Loan\n(9) Exit");
+                Console.WriteLine($"(1) Withdraw\n(2) Deposit\n(3) Open a new Account\n(4) to take out a Loan\n(5) INSERT COOL ADMIN OPTIONS HERE\n(9) Exit");
+               
             }
             else
             {
-                Console.WriteLine($"(1) Withdraw\n(2) Deposit\n(3) Open a new Account\n(4) to take out a Loan\n(5) INSERT COOL ADMIN OPTIONS HERE\n(9) Exit");
+                Console.WriteLine($"(1) Withdraw\n(2) Deposit\n(3) Open a new Account\n(4) to take out a Loan\n(9) Exit");
             }
             
         }
