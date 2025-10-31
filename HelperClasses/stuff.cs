@@ -22,7 +22,7 @@ namespace BankApp.HelperClasses
 
         public static void AddAdminUser()
         {
-            Console.WriteLine("create an Admin account ");
+            Console.WriteLine("create an Admin account");
             Console.WriteLine(" Write Admin username:");
             string username = GetUserInput.ValidateString();
             Console.WriteLine("Write password:");
