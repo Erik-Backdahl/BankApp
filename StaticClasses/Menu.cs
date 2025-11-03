@@ -41,6 +41,13 @@ class Menu
                         Admin_user.RemoveAdminUser();
                         break;
 
+
+                case "7":
+                    User.DisplayUserData(currentUser);
+                    break;
+
+                case "8":
+
                     
                 default:
                     active = false;
