@@ -21,7 +21,7 @@ class Menu
 
             Console.ForegroundColor = ConsoleColor.Blue;
 
-            string userInput = Console.ReadLine();
+            string userInput = GetUserInput.ValidateString();
             switch (userInput)
             {
                 case "1":
@@ -43,17 +43,17 @@ class Menu
                     DisplayData.DisplayUserAccounts(currentUser);
                     break;
 
-                
-
-                    case "5":
-                       
+                case "6":
+                    if (currentUser.Administator)
                         Admin_user.AddAdminUser();
-                        break;
-                    case "6":
-                        Admin_user.RemoveAdminUser();
-                        break;
+                    break;
 
-                    
+                case "7":
+                    if (currentUser.Administator)
+                        Admin_user.RemoveAdminUser();
+                    break;
+
+
                 default:
                     active = false;
                     break;
