@@ -13,7 +13,7 @@ class Menu
         {
             DisplayData.DisplayUserData(currentUser);
 
-            DisplayData.DisplayMenu(User.Administator);
+            DisplayData.DisplayMenu(currentUser.Administator);
 
             string userInput = Console.ReadLine();
             switch (userInput)
@@ -39,6 +39,15 @@ class Menu
 
                 
 
+                    case "5":
+                       
+                        Admin_user.AddAdminUser();
+                        break;
+                    case "6":
+                        Admin_user.RemoveAdminUser();
+                        break;
+
+                    
                 default:
                     active = false;
                     break;
