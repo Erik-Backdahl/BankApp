@@ -30,8 +30,14 @@ class Menu
                     break;
 
                 case "4":
+                    TakeLoan.Loan(currentUser.Accounts[0]);
+                    break;
+
+                case "5":
                     DisplayData.DisplayUserAccounts(currentUser);
                     break;
+
+                
 
                     case "5":
                        
