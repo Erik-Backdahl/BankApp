@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Threading.Tasks;
 using BankApp.HelperClasses;
+using BankApp.StaticClasses;
 using StaticClasses.Endpoint;
 
 class Menu
@@ -8,12 +9,17 @@ class Menu
     public static List<User> AllUsers = [];
     public static async Task StartMenu(User currentUser)
     {
+        Art.DisplayLogo();
         bool active = true;
         while (active)
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             DisplayData.DisplayUserData(currentUser);
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
             DisplayData.DisplayMenu(currentUser.Administator);
+
+            Console.ForegroundColor = ConsoleColor.Blue;
 
             string userInput = Console.ReadLine();
             switch (userInput)
