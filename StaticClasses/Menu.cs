@@ -47,8 +47,9 @@ class Menu
                     break;
 
                 case "8":
-
-                    
+                    User.UpdateUserData(currentUser);
+                    break;
+                                                                                                                                                                                                                                                     
                 default:
                     active = false;
                     break;

@@ -1,4 +1,4 @@
-
+﻿
 
 using BankApp.classes;
 using System.Linq.Expressions;
@@ -37,14 +37,91 @@ public class User
         string password = currentUser.Password;
         Console.WriteLine($"Name {name}");
         Console.WriteLine($"Email{email}");
-        Console.WriteLine();
+
         Console.WriteLine($"Password {password}");
+
+
+
+
+
+
+
+
+
+
     }
+
+
+
+    public static void UpdateUserData(User currentUser)// UpdateUser
+    {
+
+        Console.WriteLine("\n=== Update customer information ===");
+        Console.WriteLine("1. Change name");
+        Console.WriteLine("2. Change email");
+        Console.WriteLine("3. View customer info");
+        Console.WriteLine("0. Finish update");
+      
+
+
+
+
+
+
+        string choice = Console.ReadLine();
+        switch (choice)
+        {
+
+            case "1":
+                string newname = Console.ReadLine();
+                newname = currentUser.Name;
+                break;
+                Console.WriteLine("Your name have been changed " + newname);
+
+            case "2":
+                string newemail = Console.ReadLine();
+                newemail = currentUser.Email;
+                break;
+                Console.WriteLine("Your Email have been changed" + newemail);
+            case "3":
+                string newpassword = Console.ReadLine();
+                newpassword = currentUser.Password;
+                break;
+               
+
+                
+
+            default:
+                Console.WriteLine("\"❌ Invalid selection, please try again\".\n");
+                break;
+
+
+
+
+
+        }
+
+
+    }
+}
+
+
+
+    
 
    
 
-    }
 
+               
+
+
+   
+   
+
+  
+
+
+    
 
 
 
