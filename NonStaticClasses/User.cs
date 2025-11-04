@@ -59,7 +59,7 @@ public class User
         Console.WriteLine("\n=== Update customer information ===");
         Console.WriteLine("1. Change name");
         Console.WriteLine("2. Change email");
-        Console.WriteLine("3. View customer info");
+        Console.WriteLine("3. Change Password");
         Console.WriteLine("0. Finish update");
       
 
@@ -80,6 +80,7 @@ public class User
                 Console.WriteLine("Your name have been changed " + newname);
 
             case "2":
+                Console.WriteLine( "Write ur new Email" );
                 string newemail = Console.ReadLine();
                 newemail = currentUser.Email;
                 break;
@@ -89,9 +90,10 @@ public class User
                 newpassword = currentUser.Password;
                 break;
                
+                case "0":
 
-                
-
+                Login.StartLogin();
+                break;
             default:
                 Console.WriteLine("\"❌ Invalid selection, please try again\".\n");
                 break;
