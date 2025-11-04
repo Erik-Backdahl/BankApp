@@ -54,6 +54,15 @@ class Menu
                     break;
 
 
+
+                case "7":
+                    User.DisplayUserData(currentUser);
+                    break;
+
+                case "8":
+                    User.UpdateUserData(currentUser);
+                    break;
+                                                                                                                                                                                                                                                     
                 default:
                     active = false;
                     break;
