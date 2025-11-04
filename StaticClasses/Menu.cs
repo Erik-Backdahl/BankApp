@@ -52,8 +52,9 @@ class Menu
                     if (currentUser.Administator)
                         Admin_user.RemoveAdminUser();
                     break;
-
-
+                case "8":
+                    await Erik.TransferFunds(currentUser);
+                    break;
                 default:
                     active = false;
                     break;
