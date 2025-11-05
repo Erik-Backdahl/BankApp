@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Threading.Tasks;
 using BankApp.HelperClasses;
+using BankApp.StaticClasses;
 using StaticClasses.Endpoint;
 
 class Menu
@@ -8,14 +9,19 @@ class Menu
     public static List<User> AllUsers = [];
     public static async Task StartMenu(User currentUser)
     {
+        Art.DisplayLogo();
         bool active = true;
         while (active)
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             DisplayData.DisplayUserData(currentUser);
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
             DisplayData.DisplayMenu(currentUser.Administator);
 
-            string userInput = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
+
+            string userInput = GetUserInput.ValidateString();
             switch (userInput)
             {
                 case "1":
@@ -30,16 +36,23 @@ class Menu
                     break;
 
                 case "4":
+                    TakeLoan.Loan(currentUser.Accounts[0]);
+                    break;
+
+                case "5":
                     DisplayData.DisplayUserAccounts(currentUser);
                     break;
 
-                    case "5":
-                       
+                case "6":
+                    if (currentUser.Administator)
                         Admin_user.AddAdminUser();
-                        break;
-                    case "6":
+                    break;
+
+                case "7":
+                    if (currentUser.Administator)
                         Admin_user.RemoveAdminUser();
-                        break;
+                    break;
+
 
 
                 case "7":
