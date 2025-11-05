@@ -60,12 +60,8 @@ public class User
         Console.WriteLine("1. Change name");
         Console.WriteLine("2. Change email");
         Console.WriteLine("3. Change Password");
-        Console.WriteLine("0. Finish update");
+        Console.WriteLine("0. Loging ");
       
-
-
-
-
 
 
         string choice = Console.ReadLine();
@@ -83,11 +79,13 @@ public class User
                 Console.WriteLine( "Write ur new Email" );
                 string newemail = Console.ReadLine();
                 newemail = currentUser.Email;
-                break;
+               
                 Console.WriteLine("Your Email have been changed" + newemail);
+                break;
             case "3":
                 string newpassword = Console.ReadLine();
                 newpassword = currentUser.Password;
+                Console.WriteLine( "Your New Password " + newpassword);
                 break;
                
                 case "0":
