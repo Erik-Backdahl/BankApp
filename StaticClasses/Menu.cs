@@ -28,7 +28,7 @@ class Menu
                     MenuOptions.Withdraw(currentUser);
                     break;
                 case "2":
-                    BankAccount.AskUserToDeposit(currentUser);
+                    MenuOptions.Deposit(currentUser);
                     break;
 
                 case "3":
@@ -36,7 +36,7 @@ class Menu
                     break;
 
                 case "4":
-                    TakeLoan.Loan(currentUser.Accounts[0]);
+                    TakeLoan.Loan(currentUser.Accounts[0]); // flytta denna metod fron TakeLoan.cs till MenuOptions.cs när den är klar
                     break;
 
                 case "5":
@@ -44,23 +44,21 @@ class Menu
                     break;
 
                 case "6":
+                    MenuOptions.DisplayUserData(currentUser);
+                    break;
+
+                case "7":
+                    MenuOptions.UpdateUserData(currentUser);
+                    break;
+
+                case "8":
                     if (currentUser.Administator)
                         Admin_user.AddAdminUser();
                     break;
 
-                case "7":
+                case "9":
                     if (currentUser.Administator)
                         Admin_user.RemoveAdminUser();
-                    break;
-
-
-
-                case "7":
-                    User.DisplayUserData(currentUser);
-                    break;
-
-                case "8":
-                    User.UpdateUserData(currentUser);
                     break;
                                                                                                                                                                                                                                                      
                 default:

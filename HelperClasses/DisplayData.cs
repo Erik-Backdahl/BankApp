@@ -30,26 +30,45 @@ namespace BankApp.HelperClasses
         public static void DisplayUserAccounts(User user)
         {
             int index = 0;
-            foreach(Account account in user.Accounts)
+            foreach (Account account in user.Accounts)
             {
                 Console.WriteLine($"({index}) Type: {account.AccountType} current balance: {account.Balance} {account.Currency}");
                 index++;
             }
         }
-        public static void DisplayMenu(Boolean Administator)
+        public static void DisplayMenu(bool Administator)
         {
             if (Administator)
             {
-                Console.WriteLine($"(1) Withdraw\n(2) Deposit\n(3) Open a new Account\n(4) to take out a Loan\n(5) Display Current User info\n(6) Create new Admin user\n(7) Remove Admin user\n(9) Exit");
-               
+                Console.WriteLine(
+                $"(1) Withdraw\n" +
+                "(2) Deposit\n" +
+                "(3) Open a new Account\n" +
+                "(4) to take out a Loan\n" +
+                "(5) Display all user accounts\n" +
+                "(6) Display all user info\n" +
+                "(7) Change Your user info\n" +
+                "(8) Create new Admin user\n" +
+                "(9) Remove Admin user\n" +
+                "anything else: Exit");
+
             }
             else
             {
-                Console.WriteLine($"(1) Withdraw\n(2) Deposit\n(3) Open a new Account\n(4) to take out a Loan\n(5) Display Current User info\n(9) Exit");
+                Console.WriteLine(
+                $"(1) Withdraw\n" +
+                "(2) Deposit\n" +
+                "(3) Open a new Account\n" +
+                "(4) to take out a Loan\n" +
+                "(5) Display all user accounts\n" +
+                "(6) Display all user info\n" +
+                "(7) Change Your user info\n" +
+                "anything else: Exit"
+                    );
             }
-            
+
         }
 
-       
+
     }
 }

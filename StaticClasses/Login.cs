@@ -1,10 +1,27 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using BankApp.HelperClasses;
 
 
 class Login
 {
+    public static async Task StartProgram()
+    {
+        while(true)
+        {
+            Console.WriteLine("press 1 to login");
+            int userInput = GetUserInput.ValidateInt();
+            switch(userInput)
+            {
+                case 1:
+                    await StartLogin();
+                    break;
+                default:
+                    return;
+            }
+        }
+    }
     public static async Task StartLogin()
     {
         StartupAction.InitilizeTestData();
@@ -13,10 +30,10 @@ class Login
         while (attempts < maxAttempts) // Loop until successful login
         {
             Console.WriteLine("Enter your personal number:"); // Prompt user for personal number
-            int personalNumber = int.Parse(Console.ReadLine()); // Read and parse input
+            int personalNumber = GetUserInput.ValidateInt(); // Read and parse input
 
             Console.WriteLine("Enter your password:"); // Prompt user for password
-            string password = Console.ReadLine(); // Read input
+            string password = GetUserInput.ValidateString(); // Read input
 
             bool loggedIn = false; // Initialize login status
             var loggedInUser = default(User); // Track the logged-in user
