@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using BankApp.HelperClasses;
 using BankApp.StaticClasses;
@@ -40,23 +41,28 @@ class Menu
                     break;
 
                 case "5":
+                    await Transfer.TransferFunds(currentUser);
+                    break;
+                    
+                case "6":
                     DisplayData.DisplayUserAccounts(currentUser);
                     break;
 
-                case "6":
+                case "7":
                     MenuOptions.DisplayUserData(currentUser);
                     break;
 
-                case "7":
+                case "8":
                     MenuOptions.UpdateUserData(currentUser);
                     break;
 
-                case "8":
+
+                case "9":
                     if (currentUser.Administator)
                         Admin_user.AddAdminUser();
                     break;
 
-                case "9":
+                case "10":
                     if (currentUser.Administator)
                         Admin_user.RemoveAdminUser();
                     break;

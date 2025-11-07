@@ -45,11 +45,12 @@ namespace BankApp.HelperClasses
                 "(2) Deposit\n" +
                 "(3) Open a new Account\n" +
                 "(4) to take out a Loan\n" +
-                "(5) Display all user accounts\n" +
-                "(6) Display all user info\n" +
-                "(7) Change Your user info\n" +
-                "(8) Create new Admin user\n" +
-                "(9) Remove Admin user\n" +
+                "(5) Transfer Funds between accounts\n" +
+                "(6) Display all user accounts\n" +
+                "(7) Display all user info\n" +
+                "(8) Change Your user info\n" +
+                "(9) Create new Admin user\n" +
+                "(10) Remove Admin user\n" +
                 "anything else: Exit");
 
             }
@@ -60,9 +61,10 @@ namespace BankApp.HelperClasses
                 "(2) Deposit\n" +
                 "(3) Open a new Account\n" +
                 "(4) to take out a Loan\n" +
-                "(5) Display all user accounts\n" +
-                "(6) Display all user info\n" +
-                "(7) Change Your user info\n" +
+                "(5) Transfer Funds between accounts\n" +
+                "(6) Display all user accounts\n" +
+                "(7) Display all user info\n" +
+                "(8) Change Your user info\n" +
                 "anything else: Exit"
                     );
             }
