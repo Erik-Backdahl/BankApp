@@ -41,7 +41,7 @@ class Menu
                     break;
 
                 case "5":
-                    await Transfer.TransferFunds(currentUser);
+                    Transfer.TransferFunds(currentUser);
                     break;
 
                 case "6":
