@@ -59,12 +59,12 @@ class Menu
 
                 case "9":
                     if (currentUser.Administator)
-                        Admin_user.AddAdminUser();
+                        AdminMethods.AddAdminUser();
                     break;
 
                 case "10":
                     if (currentUser.Administator)
-                        Admin_user.RemoveAdminUser();
+                        AdminMethods.RemoveAdminUser();
                     break;
                                                                                                                                                                                                                                                      
                 default:

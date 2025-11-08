@@ -6,7 +6,7 @@ using BankApp.classes;
 using BankApp.HelperClasses;
 
 
-class Login
+class Start
 {
     public static async Task StartProgram()
     {

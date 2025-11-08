@@ -8,18 +8,10 @@ namespace BankApp.HelperClasses
 {
 
 
-    public class Admin_user_add
+    
 
+    public class AdminMethods
     {
-
-    }
-
-    public class Admin_user
-    {
-
-
-        // method to add new admin user
-
         public static void AddAdminUser()
         {
             Console.WriteLine("create an Admin account");
