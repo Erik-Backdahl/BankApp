@@ -9,7 +9,7 @@ namespace BankApp.StaticClasses
 {
     class Transfer
     {
-        public static async Task TransferFunds(User currentUser)
+        public static void TransferFunds(User currentUser)
         {
             try
             {

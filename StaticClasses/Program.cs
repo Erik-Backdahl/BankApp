@@ -6,7 +6,7 @@ namespace BankApp
     {
         static async Task Main(string[] args)
         {
-            await Login.StartProgram();
+            await Start.StartProgram();
         }
     }
 }
