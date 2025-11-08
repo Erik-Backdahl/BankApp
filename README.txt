@@ -37,3 +37,7 @@ Which would make this class difficult to manouver.
 Transfer.cs:
 This is one of the large methods displayed in the menu. It handles trasnfers between accounts 
 both internally (your own account to another of your account) and externally(to another user).
+
+
+ORIGINAL UML (verybad)
+https://cdn.discordapp.com/attachments/1430103976937787492/1436840804244127825/image.png?ex=691111c6&is=690fc046&hm=28c01f6b2bfb84535a58a3fdba35db22233b6068ce850e166a700aed9374769a&
