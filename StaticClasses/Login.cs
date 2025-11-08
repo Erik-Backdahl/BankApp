@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Transactions;
+using BankApp.classes;
 using BankApp.HelperClasses;
 
 
@@ -8,6 +10,7 @@ class Login
 {
     public static async Task StartProgram()
     {
+        DelayedTransaction.StartDelayedTransactions();
         while(true)
         {
             Console.WriteLine("press 1 to login");
@@ -61,6 +64,6 @@ class Login
             }
 
         }
-        Console.WriteLine("Login closed you failed 3 times.");
+        Console.WriteLine("You have been logged out");
     }
 }

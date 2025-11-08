@@ -7,7 +7,7 @@ using StaticClasses.Endpoint;
 
 class Menu
 {
-    public static List<User> AllUsers = [];
+    public static List<User> AllUsers = new List<User>();
     public static async Task StartMenu(User currentUser)
     {
         Art.DisplayLogo();
@@ -43,7 +43,7 @@ class Menu
                 case "5":
                     await Transfer.TransferFunds(currentUser);
                     break;
-                    
+
                 case "6":
                     DisplayData.DisplayUserAccounts(currentUser);
                     break;

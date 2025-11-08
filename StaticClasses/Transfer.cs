@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Text.Json;
 using System.Threading.Tasks;
+using BankApp.classes;
 using BankApp.HelperClasses;
 
 namespace BankApp.StaticClasses
@@ -21,12 +22,12 @@ namespace BankApp.StaticClasses
 
                     if (userInput == "1")
                     {
-                        await TransferInternally(currentUser);
+                        TransferInternally(currentUser);
                         return;
                     }
                     else if (userInput == "2")
                     {
-                        await TrasnferExternallyAsync(currentUser);
+                        TrasnferExternallyAsync(currentUser);
                         return;
                     }
                     else
@@ -41,7 +42,7 @@ namespace BankApp.StaticClasses
             }
         }
 
-        private static async Task TransferInternally(User currentUser)
+        private static void TransferInternally(User currentUser)
         {
             if (currentUser.Accounts.Count <= 1)
             {
@@ -96,7 +97,7 @@ namespace BankApp.StaticClasses
             {
                 Console.WriteLine("Enter the ammount of funds you want to transfer:");
                 int userInput = GetUserInput.ValidateInt();
-                if (userInput >= 0 && userInput < currentUser.Accounts[accountFromIndex].Balance)
+                if (userInput >= 0 && userInput <= currentUser.Accounts[accountFromIndex].Balance)
                 {
                     tranferAmmount = userInput;
                     break;
@@ -106,32 +107,12 @@ namespace BankApp.StaticClasses
                     Console.WriteLine("invalid ammount. Please make sure you have enough funds to make this transfer");
                 }
             }
-            if (currentUser.Accounts[accountFromIndex].Currency == currentUser.Accounts[accountIntoIndex].Currency)
-            {
-                currentUser.Accounts[accountFromIndex].Balance -= tranferAmmount;
-                currentUser.Accounts[accountIntoIndex].Balance += tranferAmmount;
-            }
-            else
-            {
-                HttpClient client = new HttpClient();
-                var responseFirst = await client.GetAsync($"https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@2025.5.6/v1/currencies/{currentUser.Accounts[accountFromIndex].Currency}.json");
-                string responseBodyFirst = await responseFirst.Content.ReadAsStringAsync();
-                JsonDocument docFirst = JsonDocument.Parse(responseBodyFirst);
 
-                JsonElement rootFirst = docFirst.RootElement;
-
-                string data = rootFirst.GetProperty($"{currentUser.Accounts[accountFromIndex].Currency}").GetProperty($"{currentUser.Accounts[accountIntoIndex].Currency}").ToString();
-
-                decimal conversionRate = decimal.Parse(data, CultureInfo.InvariantCulture);
-
-                decimal finalNumber = tranferAmmount * conversionRate;
-
-                currentUser.Accounts[accountFromIndex].Balance -= tranferAmmount;
-                currentUser.Accounts[accountIntoIndex].Balance += finalNumber;
-            }
-            Console.WriteLine("Trasfer successful");
+            DelayedTransaction.FormatAndAddTransfer(currentUser.Accounts[accountFromIndex], currentUser.Accounts[accountIntoIndex], tranferAmmount);
+            
+            Console.WriteLine("Trasfer scheduled");
         }
-        private static async Task TrasnferExternallyAsync(User currentUser)
+        private static void TrasnferExternallyAsync(User currentUser)
         {
             int receivingUserIndex;
             User? receivingUser = null;
@@ -141,10 +122,12 @@ namespace BankApp.StaticClasses
                 int userInput = GetUserInput.ValidateInt();
 
                 int index = 0;
+                bool userFound = false;
                 foreach (User user in Menu.AllUsers)
                 {
                     if (user.PersonalNumber == userInput)
                     {
+                        userFound = true;
                         Console.WriteLine("User Found");
                         receivingUserIndex = index;
                         receivingUser = user;
@@ -158,9 +141,13 @@ namespace BankApp.StaticClasses
                     }
                     else
                     {
-                        Console.WriteLine("user not found try again");
+
                     }
                     index++;
+                }
+                if (!userFound)
+                {
+                    Console.WriteLine("User Not Found. Try again");
                 }
             }
 
@@ -187,7 +174,7 @@ namespace BankApp.StaticClasses
             {
                 Console.WriteLine("Enter the ammount of funds you want to transfer:");
                 int userInput = GetUserInput.ValidateInt();
-                if (userInput >= 0 && userInput < currentUser.Accounts[accountFromIndex].Balance)
+                if (userInput >= 0 && userInput <= currentUser.Accounts[accountFromIndex].Balance)
                 {
                     tranferAmmount = userInput;
                     break;
@@ -198,35 +185,10 @@ namespace BankApp.StaticClasses
                 }
             }
 
-            if (currentUser.Accounts[accountFromIndex].Currency == receivingUser.Accounts[0].Currency)
-            {
-                currentUser.Accounts[accountFromIndex].Balance -= tranferAmmount;
-                receivingUser.Accounts[0].Balance += tranferAmmount;
-            }
-            else
-            {
-                HttpClient client = new HttpClient();
-                var responseFirst = await client.GetAsync($"https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@2025.5.6/v1/currencies/{currentUser.Accounts[accountFromIndex].Currency}.json");
-                string responseBodyFirst = await responseFirst.Content.ReadAsStringAsync();
-                JsonDocument docFirst = JsonDocument.Parse(responseBodyFirst);
+        
+            DelayedTransaction.FormatAndAddTransfer(currentUser.Accounts[accountFromIndex], receivingUser.Accounts[0], tranferAmmount);
 
-                JsonElement rootFirst = docFirst.RootElement;
-
-                string data = rootFirst.GetProperty($"{currentUser.Accounts[accountFromIndex].Currency}").GetProperty($"{receivingUser.Accounts[0].Currency}").ToString();
-
-                decimal conversionRate = decimal.Parse(data, CultureInfo.InvariantCulture);
-
-                decimal finalNumber = tranferAmmount * conversionRate;
-
-                currentUser.Accounts[accountFromIndex].Balance -= tranferAmmount;
-                receivingUser.Accounts[0].Balance += finalNumber;
-            }
-            Console.WriteLine("Trasfer successful");
-
-
-
-
+            Console.WriteLine("Trasfer scheduled");
         }
-
     }
 }

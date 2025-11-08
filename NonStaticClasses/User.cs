@@ -13,7 +13,7 @@ public class User
     public required string Password { get; set; }
     public required int PersonalNumber { get; set; }
     public bool Administator { get; set; } = false;
-    public List<Account> Accounts { get; set; } = [];
+    public List<Account> Accounts { get; set; } = new List<Account>();
     public decimal TotalBalance
     {
         get

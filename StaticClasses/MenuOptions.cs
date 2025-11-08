@@ -11,7 +11,7 @@ namespace StaticClasses.Endpoint
             int index = 0;
             foreach (var account in currentUser.Accounts)
             {
-                Console.WriteLine($"({index}) " + account.AccountNumber);
+                Console.WriteLine($"({index}) " + account.Balance + " " + account.Currency);
                 index++;
             }
             int number;
@@ -32,7 +32,7 @@ namespace StaticClasses.Endpoint
             decimal amount;
             while (true)
             {
-                if (decimal.TryParse(Console.ReadLine(), out amount) && amount > 0)
+                if (decimal.TryParse(Console.ReadLine(), out amount) && amount > 0 && amount <= currentUser.Accounts[number].Balance)
                 {
                     break;
                 }
@@ -42,20 +42,9 @@ namespace StaticClasses.Endpoint
                 }
             }
 
-            if (currentUser.Accounts[number].Balance >= amount)
-            {
 
-                Console.WriteLine($"\nUttag på {amount} {currentUser.Accounts[number].Currency} har registrerats.");
-
-
-                Console.WriteLine("Transaktionen kommer behandlas inom 15 minuter.");
-            }
-            else
-            {
-                Console.WriteLine("Otillräckligt saldo för detta uttag.");
-            }
-
-            currentUser.Accounts[number].Balance = -amount;
+            Console.WriteLine($"\nWithdrawl of {amount} {currentUser.Accounts[number].Currency} has been scheduled");
+            DelayedTransaction.FormatAndAddWithdraw(currentUser.Accounts[number], amount);
 
         }
         public static void Deposit(User currentUser)// Method to prompt user for deposit details
@@ -82,9 +71,9 @@ namespace StaticClasses.Endpoint
 
             Console.WriteLine("How much do you want to deposit?"); // Prompt for deposit amou
                                                                    // nt
-            decimal depositAmount = Convert.ToDecimal(GetUserInput.ValidateInt()); // Read deposit amount input
+            decimal depositamount = Convert.ToDecimal(GetUserInput.ValidateInt()); // Read deposit amount input
 
-            currentUser.Accounts[accountNumber].Balance += depositAmount;
+            DelayedTransaction.FormatAndAddDeposit(currentUser.Accounts[accountNumber], depositamount);
 
             Console.WriteLine("Deposit Sucessful!"); // Confirm successful deposit
         }
@@ -146,7 +135,7 @@ namespace StaticClasses.Endpoint
                 }
             }
 
-            user.Accounts.Add(new Account { AccountType = accountType, Currency = selectedCurrency });
+            user.Accounts.Add(new Account { OwnerPersonNumber = user.PersonalNumber, AccountType = accountType, Currency = selectedCurrency });
             Console.WriteLine($"Success. Created a {accountType} account with the currency {selectedCurrency}");
 
             return;

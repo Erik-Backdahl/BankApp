@@ -41,7 +41,7 @@ namespace BankApp.HelperClasses
             if (Administator)
             {
                 Console.WriteLine(
-                $"(1) Withdraw\n" +
+                $"\n(1) Withdraw\n" +
                 "(2) Deposit\n" +
                 "(3) Open a new Account\n" +
                 "(4) to take out a Loan\n" +
@@ -57,7 +57,7 @@ namespace BankApp.HelperClasses
             else
             {
                 Console.WriteLine(
-                $"(1) Withdraw\n" +
+                $"\n(1) Withdraw\n" +
                 "(2) Deposit\n" +
                 "(3) Open a new Account\n" +
                 "(4) to take out a Loan\n" +

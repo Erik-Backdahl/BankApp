@@ -9,6 +9,7 @@ namespace BankApp.classes
 {
     public class Account
     {
+        public required int OwnerPersonNumber { get; set; } 
         public string AccountNumber { get; set; } = Guid.NewGuid().ToString();
         public decimal Balance { get; set; }
         public required string AccountType { get; set; }
